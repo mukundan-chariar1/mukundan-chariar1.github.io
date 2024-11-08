@@ -32,6 +32,7 @@ nav{
   z-index: 998;
   transition: all 0.3s ease;
   font-family: 'Ubuntu', sans-serif;
+  background-color: #f8f9fa;
 }
 nav.sticky{
   background: #4070f4;
@@ -107,18 +108,16 @@ nav.sticky .menu-btn{
   color: #fff;
 }
 
-.home {
-    height: 100vh;
-    width: 100%;
-    background-color: #2E6F95; /* Dark blue color */
-    font-family: 'Ubuntu', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white; /* Text color to contrast with background */
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
+/* home section styling */
+.home{
+  height: 100vh;
+  width: 100%;
+  /* background: url("https://github.com/Kapil987/contactKapil.github.io/blob/main/images/background.png") no-repeat; */
+  background: url("images/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
 }
 .home .home-content{
   width: 90%;
@@ -130,7 +129,7 @@ nav.sticky .menu-btn{
 }
 .home .text-one{
   font-size: 25px;
-  color: #b6b6b6;
+  color: #0E2431;
 }
 .home .text-two{
   color: #0E2431;
@@ -332,7 +331,7 @@ section .button button:hover{
   color: #4070f4;
 }
 
-/* My Services CSS */
+/* My projects CSS */
 .projects .boxes {
   display: flex;
   flex-wrap: wrap;
@@ -340,24 +339,22 @@ section .button button:hover{
 }
 
 .projects .boxes .box-link {
-  text-decoration: none; /* Remove underline from link */
-  color: inherit;        /* Inherit color for consistency */
-  width: calc(100% / 3 - 20px); /* Same width as .box */
+  text-decoration: none;             /* Remove underline */
+  color: inherit;                    /* Inherit text color */
+  width: calc(100% / 3 - 20px);      /* Same width as .box */
   display: inline-block;
   margin: 20px 0;
-  height: 100%;   
+  height: 100%;                      /* Match height of the box */
 }
 
 .projects .boxes .box {
-  margin: 20px 0;
-  width: calc(100% / 3 - 20px);
   text-align: center;
   border-radius: 12px;
   padding: 30px 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
   cursor: pointer;
   transition: all 0.4s ease;
-  height: 100%;   
+  height: 100%;                     /* Ensures box fills its container height */
 }
 
 .projects .boxes .box:hover {
@@ -387,21 +384,19 @@ section .button button:hover{
 .projects .boxes .box:hover p {
   color: #fff;
 }
-
-/* Contact Me Section */
-.contact {
+/* Contact Me CSS */
+.contact{
   background: #F0F8FF;
 }
-.contact .content {
+.contact .content{
   margin: 0 auto;
   padding: 30px 0;
 }
-.contact .text {
+.contact .text{
   width: 80%;
   text-align: center;
   margin: auto;
 }
-
 
 /* Footer CSS */
 footer{
