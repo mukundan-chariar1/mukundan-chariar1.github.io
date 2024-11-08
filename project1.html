@@ -13,24 +13,61 @@
             background-color: #f9f9f9;
             color: #333;
         }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            background-color: #1E90FF; /* Blue background */
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar .menu li {
+            margin: 0 15px;
+        }
+
+        .navbar .menu li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            background-color: #187bcd; /* Darker blue for hover */
+        }
+
+        /* Main Container Styling */
         .container {
-            width: 90%;
-            max-width: 800px;
+            width: 100%;
+            max-width: 1000px;
             margin: 20px auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
         h1, h2 {
-            color: #4CAF50;
+            color: #1E90FF; /* Blue color */
         }
+
         .section {
             margin: 20px 0;
         }
+
         ul {
             padding-left: 20px;
         }
+
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 10px;
@@ -38,39 +75,146 @@
             box-sizing: border-box;
             font-size: 1rem;
         }
+
         .contact-form button {
-            background-color: #4CAF50;
+            background-color: #1E90FF; /* Blue color */
             color: white;
             padding: 10px 15px;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
+
+        /* Hover effect for buttons */
+        .contact-form button:hover, .navigation-buttons button:hover {
+            background-color: #187bcd; /* Darker blue for hover */
+        }
+
         /* Navigation buttons styling */
         .navigation-buttons {
             margin-top: 20px;
             display: flex;
             justify-content: space-between;
         }
+
         .navigation-buttons button {
-            background-color: #4CAF50;
+            background-color: #1E90FF; /* Blue color */
             color: white;
             padding: 10px 20px;
             border: none;
             cursor: pointer;
             font-size: 1rem;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Image Carousel Styling */
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            max-height: 400px;
+            margin-bottom: 20px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .carousel-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 600px) {
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navigation-buttons button {
+                margin: 5px 0;
+                width: 100%;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .navbar .menu {
+                flex-direction: column;
+            }
+
+            .navbar .menu li {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
 
+<!-- Navbar -->
+<div class="navbar">
+    <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</div>
+
+<!-- Main Content -->
 <div class="container">
     <!-- Project Title -->
     <header>
         <h1>Project Name</h1>
         <p>A brief overview of the project.</p>
     </header>
+
+    <!-- Image Carousel Section -->
+    <section class="section" id="image-carousel">
+        <h2>Project Images</h2>
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="https://via.placeholder.com/800x400?text=Image+1" alt="Image 1">
+                <img src="https://via.placeholder.com/800x400?text=Image+2" alt="Image 2">
+                <img src="https://via.placeholder.com/800x400?text=Image+3" alt="Image 3">
+            </div>
+            <!-- Carousel Navigation Buttons -->
+            <div class="carousel-nav">
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Project Description Section -->
     <section class="section" id="description">
@@ -85,7 +229,6 @@
             <li>Feature 1: Description of the first feature.</li>
             <li>Feature 2: Description of the second feature.</li>
             <li>Feature 3: Description of the third feature.</li>
-            <!-- Add more features as needed -->
         </ul>
     </section>
 
@@ -114,5 +257,34 @@
     </div>
 </div>
 
-</body>
-</html>
+<script>
+    // JavaScript for Carousel Functionality
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-images img');
+    const totalImages = images.length;
+    const carouselImages = document.querySelector('.carousel-images');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    // Function to change images in the carousel
+    function updateCarousel() {
+        const offset = -currentIndex * 100; // Move the carousel to the left
+        carouselImages.style.transform = `translateX(${offset}%)`;
+    }
+
+    // Event listeners for the navigation buttons
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+        updateCarousel();
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+        updateCarousel();
+    });
+
+    // Automatically transition every 3 seconds
+    setInterval(() => {
+        currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+        updateCarousel();
+    }, 3000);
