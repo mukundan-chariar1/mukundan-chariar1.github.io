@@ -184,8 +184,12 @@
 <div class="container">
     <!-- Project Title -->
     <header>
-        <h1>Project Name</h1>
-        <p>A brief overview of the project.</p>
+        <h1>3D reconstruction using SfM and NeRF</h1>
+        <p>The goal of this project was to perform 3D reconstruction on ‘in the wild’ images. 3D reconstruction is a technique where we triangulate the location of points using two different images. Since 3D reconstruction is usually performed in controlled conditions, where we know the focal length of the camera’s lens, the resolution of the image, and can also control the lighting conditions the images were taken in, this proved to be a challenging task. <br> <br>
+        We scraped the web to obtain images of objects in at least two different views, and utilized these images along with a dataset to test our methods. The first method we implemented was Structure from Motion, which reconstructs the given object using the motion of the camera. An optimization based triangulation method was used, and this was relatively simple, since the camera’s parameters remained constant between two shots. The 3D location of the points was optimized with respect to reprojection error in each image. Reprojection error is the error between the position of the original point and its reprojected location. <br> <br>        
+        The second method we implemented was NeRF, or Neural Radiance Field based reconstruction. This method involves simulating a ray of light using neural networks, and tracing it back to its source. The usage of neural networks makes this method highly accurate and fast due to parallel processing. Tracing the ray of light back to the source allows us to reconstruct the object in directions that we may not have images of. NeRF based methods also have an advantage of being highly realistic, when rendered. <br> <br>        
+        My main contributions to this project were scraping the web to obtain the dataset, and helping formulate the optimization strategy for the Structure from Motion methodology.
+            </p>
     </header>
 
     <!-- Image Carousel Section -->
@@ -206,26 +210,26 @@
     </section>
 
     <!-- Project Description Section -->
-    <section class="section" id="description">
+    <!-- <section class="section" id="description">
         <h2>Description</h2>
         <p>This section provides a detailed description of the project, its purpose, and any relevant background information.</p>
-    </section>
+    </section> -->
 
     <!-- Features Section -->
-    <section class="section" id="features">
+    <!-- <section class="section" id="features">
         <h2>Features</h2>
         <ul>
             <li>Feature 1: Description of the first feature.</li>
             <li>Feature 2: Description of the second feature.</li>
             <li>Feature 3: Description of the third feature.</li>
         </ul>
-    </section>
+    </section> -->
 
     <!-- Technologies Used Section -->
-    <section class="section" id="technologies">
+    <!-- <section class="section" id="technologies">
         <h2>Technologies Used</h2>
         <p>HTML, CSS, JavaScript, MediaPipe, Bi-GRU Model, etc.</p>
-    </section>
+    </section> -->
 
     <!-- Navigation Buttons -->
     <div class="navigation-buttons">
