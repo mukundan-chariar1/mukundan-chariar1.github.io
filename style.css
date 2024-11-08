@@ -333,29 +333,41 @@ section .button button:hover{
 }
 
 /* My Services CSS */
-.projects .boxes{
+.projects .boxes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.projects .boxes .box{
+
+.projects .boxes .box-link {
+  text-decoration: none; /* Remove underline from link */
+  color: inherit;        /* Inherit color for consistency */
+  width: calc(100% / 3 - 20px); /* Same width as .box */
+  display: inline-block;
+  margin: 20px 0;
+  height: 100%;   
+}
+
+.projects .boxes .box {
   margin: 20px 0;
   width: calc(100% / 3 - 20px);
   text-align: center;
   border-radius: 12px;
   padding: 30px 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-  cursor: default;
+  cursor: pointer;
   transition: all 0.4s ease;
+  height: 100%;   
 }
-.projects .boxes .box:hover{
+
+.projects .boxes .box:hover {
   background: #4070f4;
   color: #fff;
 }
-.projects .boxes .box .icon{
+
+.projects .boxes .box .icon {
   height: 50px;
   width: 50px;
-  /* background: #4070f4; */
   background: transparent;
   border-radius: 50%;
   text-align: center;
@@ -365,32 +377,31 @@ section .button button:hover{
   margin: 0 auto 10px auto;
   transition: all 0.4s ease;
 }
-.boxes .box:hover .icon{
+
+.boxes .box:hover .icon {
   background-color: #fff;
   color: #4070f4;
 }
+
 .projects .boxes .box:hover .topic,
-.projects .boxes .box:hover p{
-  color: #0E2431;
-  transition: all 0.4s ease;
-}
-.projects .boxes .box:hover .topic,
-.projects .boxes .box:hover p{
+.projects .boxes .box:hover p {
   color: #fff;
 }
-/* Contact Me CSS */
-.contact{
+
+/* Contact Me Section */
+.contact {
   background: #F0F8FF;
 }
-.contact .content{
+.contact .content {
   margin: 0 auto;
   padding: 30px 0;
 }
-.contact .text{
+.contact .text {
   width: 80%;
   text-align: center;
   margin: auto;
 }
+
 
 /* Footer CSS */
 footer{
