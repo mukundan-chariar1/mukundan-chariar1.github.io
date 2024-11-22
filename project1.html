@@ -109,48 +109,68 @@
             transition: background-color 0.3s ease;
         }
 
-        /* Image Carousel Styling */
-        .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            max-height: 400px;
-            margin-bottom: 20px;
-        }
+        * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
 
-        .carousel-images {
-            display: flex;
-            transition: transform 1s ease;
-        }
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
-        .carousel-images img {
-            width: 100%;
-            object-fit: cover;
-        }
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
 
-        /* Carousel Navigation */
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
-        .carousel-nav button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            font-size: 2rem;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
 
-        .carousel-nav button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
 
         /* Responsive Design for Smaller Screens */
         @media (max-width: 600px) {
@@ -192,8 +212,58 @@
             </p>
     </header>
 
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="images/project1/camera_holder.png" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="img_snow_wide.jpg" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="img_mountains_wide.jpg" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div>
+        
+        </div>
+        <br>
+        
+        <div style="text-align:center">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+        </div>
+        <script>
+            let slideIndex = 0;
+            showSlides();
+            
+            function showSlides() {
+              let i;
+              let slides = document.getElementsByClassName("mySlides");
+              let dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+            </script>
+
     <!-- Image Carousel Section -->
-    <section class="section" id="image-carousel">
+    <!-- <section class="section" id="image-carousel">
         <h2>Project Images</h2>
         <div class="carousel">
             <div class="carousel-images">
@@ -207,13 +277,12 @@
                 <img src="images/project1/MicrosoftTeams-image.png" alt="Image 1">
                 <img src="images/project1/skeleton.png" alt="Image 1">
             </div>
-            <!-- Carousel Navigation Buttons -->
             <div class="carousel-nav">
                 <button class="prev">&#10094;</button>
                 <button class="next">&#10095;</button>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Project Description Section -->
     <!-- <section class="section" id="description">
@@ -243,35 +312,3 @@
         <button onclick="window.location.href='./project2.html'">Next project</button>
     </div>
 </div>
-
-<script>
-    // JavaScript for Carousel Functionality
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.carousel-images img');
-    const totalImages = images.length;
-    const carouselImages = document.querySelector('.carousel-images');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-
-    // Function to change images in the carousel
-    function updateCarousel() {
-        const offset = -currentIndex * 100; // Move the carousel to the left
-        carouselImages.style.transform = `translateX(${offset}%)`;
-    }
-
-    // Event listeners for the navigation buttons
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
-        updateCarousel();
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
-        updateCarousel();
-    });
-
-    // Automatically transition every 3 seconds
-    setInterval(() => {
-        currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
-        updateCarousel();
-    }, 3000);
