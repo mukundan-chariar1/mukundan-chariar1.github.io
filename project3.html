@@ -255,17 +255,17 @@ img {vertical-align: middle;}
 <div class="container">
     <!-- Project Title -->
     <header>
-        <h1>AI Trainer: Autoencoder Based Approach for Squat Analysis and Correction</h1>
-        <p>Artificial intelligence and computer vision have vast applications in workout analysis, especially within sports and athletics, to identify errors and enhance performance. These technologies also reduce the risk of injury often linked to insufficient guidance or high-cost infrastructure. A key example is the squat exercise, where a person moves from a standing position to a deep knee bend with a vertical torso and then returns upright. Each individual's squat form varies due to differences in limb length, joint mobility, and muscular strength, influencing their movement mechanics. Squats offer numerous benefits, including increased leg strength, reinforced knee and hip joints, and cardiovascular health improvement, which lowers the risk of heart disease.<br> <br>
-        This project proposed a method to classify squat types and suggest the appropriate version for each user. Using MediaPipe and a deep learning-based approach, this study assesses squat quality as "good" or "bad." Specifically, a stacked Bidirectional Gated Recurrent Unit (Bi-GRU) model with an attention layer is employed for accurate, unbiased assessment, categorizing squats into seven classes. The model is then compared against other state-of-the-art models, both with and without attention layers. Achieving an accuracy rate of 94%, the model demonstrates superior consistency and performance with our dataset. Additionally, for users performing incorrect squats, corrective feedback is offered based on their unique performance and body proportions, guiding them toward proper form.<br> <br>
-        We collected data from over 40 participants, from whom we received informed consent. Each participant was instructed to do the squat exercise in a certain way. The spread of participants included typical as well as atypical squat motions. Normal participants were instructed to perform the squat exercise improperly so as to obtain a better distribution of data. <br> <br>        
-        Data was collected using a multi camera setup, that was custom made for our purposes. My contribution to this work was design of the study, design of the data collection apparatus, data collection itself, design of the feature extraction method and the design, training and testing of the neural network. 
+        <h1>Physiotherapy exercise error detection using computer vision and machine learning</h1>
+        <p>The usage of wearables is increasing in clinics for monitoring patients. One such application of wearables is to monitor and evaluate physiotherapy exercises.  The usage of sensors alone does not always suffice due to drift in the readings of the sensors. Hence, we need to fuse readings from sensors in order to obtain a more accurate reading for joint angles.<br> <br>
+        We use a simple optimization method to fuse the readings obtained from two cameras and 10 IMUs. A SMPL model is obtained, that reflects the joint angles of the person performing the exercise. <br> <br>        
+        Joint angles extracted from the model are used to classify the exercise into error and no error. 
+             
             </p>
     </header>
 <!-- Navigation Buttons -->
     <div class="navigation-buttons">
-        <button onclick="window.location.href='./project1.html'">Prev project</button>
+        <button onclick="window.location.href='./project2.html'">Prev project</button>
         <button onclick="window.location.href='./index.html'">Back to home</button>
-        <button onclick="window.location.href='./project3.html'">Next project</button>
+        <button onclick="window.location.href='./project4.html'">Next project</button>
     </div>
 </div>
