@@ -116,8 +116,9 @@ body {font-family: Verdana, sans-serif;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
-  height: auto;
+  /* max-width: 1000px; */
+  height: 500px;
+  width: auto;
   position: relative;
   margin: auto;
 }
@@ -200,6 +201,91 @@ body {font-family: Verdana, sans-serif;}
     </style>
 </head>
 <body>
+    
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Main Content -->
+<div class="container">
+    <div class="navigation-buttons">
+        <button onclick="window.location.href='./project5.html'"><i class="fa fa-arrow-left"></i> Prev project</button>
+        <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
+        <!-- <button onclick="window.location.href='./project5.html'">Next project <i class="fa fa-arrow-right"></i></button> -->
+    </div>
+    <!-- Project Title -->
+    <header>
+        <h1>Multimodal Deep learning for Visual Question Answering</h1>
+        <p>Visual question answering is a deep learning task where an image and an associated question are passed to the model, and the model must answer the question based on the information in the image. VQA presents a difficult task for deep learning models, as they must implicitly understand the information in an image. Transformer based networks have proven up to this task and perform well to answer questions relating to information in images.<br> <br>
+        We built a transformer based model that answered questions with respect to information present in images. The dataset that we used to implement this task was called Neural Symbolic VQA, and was a state of the art dataset to implement the model. <br> <br>        
+        We reached a maximum accuracy of 70% on the dataset, although we were only able to train it partially due to time constraints. 
+             
+            </p>
+    </header>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 9</div>
+          <div class="center"><img src="images/project4/dataset_pie.png"></div>
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 9</div>
+          <div class="center"><img src="images/project4/model.png"></div>
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 9</div>
+          <div class="center"><img src="images/project4/numbers.png"></div>
+          <div class="text">Caption Three</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 9</div>
+          <div class="center"><img src="images/project4/ourmodel.png"></div>
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">5 / 9</div>
+          <div class="center"><img src="images/project4/results1.png"></div>
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">6 / 9</div>
+          <div class="center"><img src="images/project4/results2.png"></div>
+          <div class="text">Caption Three</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">7 / 9</div>
+          <div class="center"><img src="images/project4/results3.png"></div>
+          <div class="text">Caption Text</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">8 / 9</div>
+          <div class="center"><img src="images/project4/results4.png"></div>
+          <div class="text">Caption Two</div>
+        </div>
+        
+        <div class="mySlides fade">
+          <div class="numbertext">9 / 9</div>
+          <div class="center"><img src="images/project4/results5.png"></div>
+          <div class="text">Caption Three</div>
+        </div>
+        
+    </div>
+        <br>
+        
+    <div style="text-align:center">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+    </div>
 
     <script>
         let slideIndex = 0;
@@ -223,54 +309,5 @@ body {font-family: Verdana, sans-serif;}
         }
         </script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Main Content -->
-<div class="container">
-    <div class="navigation-buttons">
-        <button onclick="window.location.href='./project5.html'"><i class="fa fa-angle-left"></i> Prev project</button>
-        <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./temp.html'">Next project <i class="fa fa-angle-right"></button>
-    </div>
-    <!-- Project Title -->
-    <header>
-        <h1>AI Trainer: Autoencoder Based Approach for Squat Analysis and Correction</h1>
-        <p>Artificial intelligence and computer vision have vast applications in workout analysis, especially within sports and athletics, to identify errors and enhance performance. These technologies also reduce the risk of injury often linked to insufficient guidance or high-cost infrastructure. A key example is the squat exercise, where a person moves from a standing position to a deep knee bend with a vertical torso and then returns upright. Each individual's squat form varies due to differences in limb length, joint mobility, and muscular strength, influencing their movement mechanics. Squats offer numerous benefits, including increased leg strength, reinforced knee and hip joints, and cardiovascular health improvement, which lowers the risk of heart disease.<br> <br>
-        This project proposed a method to classify squat types and suggest the appropriate version for each user. Using MediaPipe and a deep learning-based approach, this study assesses squat quality as "good" or "bad." Specifically, a stacked Bidirectional Gated Recurrent Unit (Bi-GRU) model with an attention layer is employed for accurate, unbiased assessment, categorizing squats into seven classes. The model is then compared against other state-of-the-art models, both with and without attention layers. Achieving an accuracy rate of 94%, the model demonstrates superior consistency and performance with our dataset. Additionally, for users performing incorrect squats, corrective feedback is offered based on their unique performance and body proportions, guiding them toward proper form.<br> <br>
-        We collected data from over 40 participants, from whom we received informed consent. Each participant was instructed to do the squat exercise in a certain way. The spread of participants included typical as well as atypical squat motions. Normal participants were instructed to perform the squat exercise improperly so as to obtain a better distribution of data. <br> <br>        
-        Data was collected using a multi camera setup, that was custom made for our purposes. My contribution to this work was design of the study, design of the data collection apparatus, data collection itself, design of the feature extraction method and the design, training and testing of the neural network. 
-            </p>
-    </header>
-
-    <div class="slideshow-container">
-
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <div class="center"><img src="images/project1/camera_holder.png"></div>
-          <div class="text">Caption Text</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <div class="center"><img src="img_snow_wide.jpg"></div>
-          <div class="text">Caption Two</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <div class="center"><img src="img_mountains_wide.jpg"></div>
-          <div class="text">Caption Three</div>
-        </div>
-        
-    </div>
-        <br>
-        
-    <div style="text-align:center">
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-    </div>
-    
 <!-- Navigation Buttons -->
-    
 </div>

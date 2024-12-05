@@ -201,36 +201,14 @@ body {font-family: Verdana, sans-serif;}
 </head>
 <body>
 
-    <script>
-        let slideIndex = 0;
-        showSlides();
-        
-        function showSlides() {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          slideIndex++;
-          if (slideIndex > slides.length) {slideIndex = 1}    
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-          setTimeout(showSlides, 2000); // Change image every 2 seconds
-        }
-        </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Main Content -->
 <div class="container">
     <div class="navigation-buttons">
-        <button onclick="window.location.href='./project4.html'"><i class="fa fa-angle-left"></i> Prev project</button>
+        <button onclick="window.location.href='./project4.html'"><i class="fa fa-arrow-left"></i> Prev project</button>
         <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./project6.html'">Next project <i class="fa fa-angle-right"></button>
+        <button onclick="window.location.href='./project6.html'">Next project <i class="fa fa-arrow-right"></i></button>
     </div>
     <!-- Project Title -->
     <header>
@@ -269,75 +247,75 @@ body {font-family: Verdana, sans-serif;}
             <div class="numbertext">5 / 25</div>
             <div class="center"><img src="images/project5/model2.png"></div>
             <div class="text">Caption Text</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">6 / 25</div>
             <div class="center"><img src="images/project5/schematic2.png"></div>
             <div class="text">Caption Two</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">7 / 25</div>
             <div class="center"><img src="images/project5/graph2.png"></div>
             <div class="text">Caption Three</div>
-          </div>
+        </div>
   
-          <div class="mySlides fade">
+        <div class="mySlides fade">
               <div class="numbertext">8 / 25</div>
               <div class="center"><img src="images/project5/graph8.png"></div>
               <div class="text">Caption Three</div>
-          </div>
+        </div>
 
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">9 / 25</div>
             <div class="center"><img src="images/project5/model3.png"></div>
             <div class="text">Caption Text</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">10 / 25</div>
             <div class="center"><img src="images/project5/schematic3.png"></div>
             <div class="text">Caption Two</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">11 / 25</div>
             <div class="center"><img src="images/project5/graph3.png"></div>
             <div class="text">Caption Three</div>
-          </div>
+        </div>
   
-          <div class="mySlides fade">
+        <div class="mySlides fade">
               <div class="numbertext">12 / 25</div>
               <div class="center"><img src="images/project5/graph9.png"></div>
               <div class="text">Caption Three</div>
-          </div>
+        </div>
 
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">13 / 25</div>
             <div class="center"><img src="images/project5/model4.png"></div>
             <div class="text">Caption Text</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">14 / 25</div>
             <div class="center"><img src="images/project5/schematic4.png"></div>
             <div class="text">Caption Two</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">15 / 25</div>
             <div class="center"><img src="images/project5/graph4.png"></div>
             <div class="text">Caption Three</div>
-          </div>
+        </div>
   
-          <div class="mySlides fade">
+        <div class="mySlides fade">
               <div class="numbertext">16 / 25</div>
               <div class="center"><img src="images/project5/graph10.png"></div>
               <div class="text">Caption Three</div>
-          </div>
+        </div>
 
-          <div class="mySlides fade">
+        <div class="mySlides fade">
           <div class="numbertext">17 / 25</div>
           <div class="center"><img src="images/project5/model5.png"></div>
           <div class="text">Caption Text</div>
@@ -365,27 +343,27 @@ body {font-family: Verdana, sans-serif;}
             <div class="numbertext">21 / 25</div>
             <div class="center"><img src="images/project5/model6.png"></div>
             <div class="text">Caption Text</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">22 / 25</div>
             <div class="center"><img src="images/project5/schematic6.png"></div>
             <div class="text">Caption Two</div>
-          </div>
+        </div>
           
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">23 / 25</div>
             <div class="center"><img src="images/project5/graph6.png"></div>
             <div class="text">Caption Three</div>
-          </div>
+        </div>
   
-          <div class="mySlides fade">
+        <div class="mySlides fade">
               <div class="numbertext">24 / 25</div>
               <div class="center"><img src="images/project5/graph12.png"></div>
               <div class="text">Caption Three</div>
-          </div>
+        </div>
 
-          <div class="mySlides fade">
+        <div class="mySlides fade">
             <div class="numbertext">25 / 25</div>
             <div class="center"><img src="images/project5/graph13.png"></div>
             <div class="text">Caption Three</div>
@@ -421,6 +399,28 @@ body {font-family: Verdana, sans-serif;}
           <span class="dot"></span> 
           <span class="dot"></span> 
     </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          slideIndex++;
+          if (slideIndex > slides.length) {slideIndex = 1}    
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+          setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
     
 <!-- Navigation Buttons -->
     
