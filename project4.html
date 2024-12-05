@@ -112,13 +112,27 @@
         * {box-sizing: border-box;}
 body {font-family: Verdana, sans-serif;}
 .mySlides {display: none;}
-.center img {width: auto; height: 500px; margin-left: auto; margin-right: auto; display: block;}
+.center {
+    width: 900px;  /* Fixed width for the container */
+    height: 900px; /* Fixed height for the container */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-sizing: border-box; /* Includes padding in the element's total width/height */
+}
+
+.center img {
+    width: 100%;  /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: contain; /* Scale the image to cover the container, preserving aspect ratio */
+}
 
 /* Slideshow container */
 .slideshow-container {
-  /* max-width: 1000px; */
-  height: 500px;
-  width: auto;
+  max-width: 1000px;
+  height: auto;
   position: relative;
   margin: auto;
 }
@@ -136,7 +150,7 @@ body {font-family: Verdana, sans-serif;}
 
 /* Number text (1/3 etc) */
 .numbertext {
-  color: #f2f2f2;
+  color: #000000;
   font-size: 12px;
   padding: 8px 12px;
   position: absolute;
@@ -201,7 +215,6 @@ body {font-family: Verdana, sans-serif;}
     </style>
 </head>
 <body>
-    
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -215,65 +228,62 @@ body {font-family: Verdana, sans-serif;}
     <!-- Project Title -->
     <header>
         <h1>Multimodal Deep learning for Visual Question Answering</h1>
-        <p>Visual question answering is a deep learning task where an image and an associated question are passed to the model, and the model must answer the question based on the information in the image. VQA presents a difficult task for deep learning models, as they must implicitly understand the information in an image. Transformer based networks have proven up to this task and perform well to answer questions relating to information in images.<br> <br>
-        We built a transformer based model that answered questions with respect to information present in images. The dataset that we used to implement this task was called Neural Symbolic VQA, and was a state of the art dataset to implement the model. <br> <br>        
-        We reached a maximum accuracy of 70% on the dataset, although we were only able to train it partially due to time constraints. 
-             
+        <p>Visual Question Answering (VQA) is a deep learning task where a model is given an image and a related question and must generate a correct answer based on the information in the image. The challenge lies in the model's ability to understand both the visual content and the semantics of the question, requiring it to implicitly reason about the relationships between objects in the image and the details asked in the question. This task is more complex than simple image classification, as the model must comprehend the image and answer specific questions related to its contents.<br> <br>
+
+        To tackle this, we built a transformer-based model, which has proven effective in handling tasks that require understanding both images and text. Transformers, particularly those utilizing attention mechanisms, are capable of processing complex relationships between visual elements and textual queries, making them well-suited for VQA. We trained our model using the **Neural Symbolic VQA** dataset, a state-of-the-art dataset designed for this task, which includes a wide range of questions and images that challenge the model’s ability to reason and understand context.<br> <br>
+        
+        Our model achieved a **maximum accuracy of 70%** on the dataset, which is promising given the challenges of VQA tasks. However, due to time constraints, the model was not fully trained, and there is potential for further improvements with more training data and fine-tuning. While our results are encouraging, we recognize that VQA models still face difficulties with complex reasoning tasks, and future work could focus on improving multi-step reasoning and handling more intricate questions.<br> <br>
+        
+        Despite these challenges, our work highlights the potential of transformer-based models for VQA tasks and opens the door to applications in areas such as human-computer interaction, robotics, and automated content generation. With further advancements in model architectures and training techniques, VQA systems are expected to become more accurate and effective in interpreting and answering questions about images.
             </p>
     </header>
 
     <div class="slideshow-container">
 
         <div class="mySlides fade">
-          <div class="numbertext">1 / 9</div>
+          <div class="numbertext">1 / 8</div>
           <div class="center"><img src="images/project4/dataset_pie.png"></div>
           <div class="text">Caption Text</div>
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">2 / 9</div>
+          <div class="numbertext">2 / 8</div>
           <div class="center"><img src="images/project4/model.png"></div>
           <div class="text">Caption Two</div>
         </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 9</div>
-          <div class="center"><img src="images/project4/numbers.png"></div>
-          <div class="text">Caption Three</div>
-        </div>
 
         <div class="mySlides fade">
-          <div class="numbertext">4 / 9</div>
+          <div class="numbertext">3 / 8</div>
           <div class="center"><img src="images/project4/ourmodel.png"></div>
           <div class="text">Caption Text</div>
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">5 / 9</div>
+          <div class="numbertext">4 / 8</div>
           <div class="center"><img src="images/project4/results1.png"></div>
           <div class="text">Caption Two</div>
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">6 / 9</div>
+          <div class="numbertext">5 / 8</div>
           <div class="center"><img src="images/project4/results2.png"></div>
           <div class="text">Caption Three</div>
         </div>
 
         <div class="mySlides fade">
-          <div class="numbertext">7 / 9</div>
+          <div class="numbertext">6 / 8</div>
           <div class="center"><img src="images/project4/results3.png"></div>
           <div class="text">Caption Text</div>
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">8 / 9</div>
+          <div class="numbertext">7 / 8</div>
           <div class="center"><img src="images/project4/results4.png"></div>
           <div class="text">Caption Two</div>
         </div>
         
         <div class="mySlides fade">
-          <div class="numbertext">9 / 9</div>
+          <div class="numbertext">8 / 8</div>
           <div class="center"><img src="images/project4/results5.png"></div>
           <div class="text">Caption Three</div>
         </div>
@@ -285,29 +295,32 @@ body {font-family: Verdana, sans-serif;}
           <span class="dot"></span> 
           <span class="dot"></span> 
           <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
     </div>
 
     <script>
-        let slideIndex = 0;
-        showSlides();
-        
-        function showSlides() {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          slideIndex++;
-          if (slideIndex > slides.length) {slideIndex = 1}    
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-          setTimeout(showSlides, 2000); // Change image every 2 seconds
+      let slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
         }
-        </script>
-
-<!-- Navigation Buttons -->
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+  </script>
 </div>

@@ -258,6 +258,9 @@ section  .topic{
 }
 section .button{
   margin: 16px 0;
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  padding-left: 43%; /* Moves it to 3/4th of the window width */
 }
 section .button button{
   outline: none;
