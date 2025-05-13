@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Page</title>
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Navigation Bar Styling */
+        .navbar {
+            background-color: #1E90FF; /* Blue background */
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar .menu li {
+            margin: 0 15px;
+        }
+
+        .navbar .menu li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .menu li a:hover {
+            background-color: #187bcd; /* Darker blue for hover */
+        }
+
+        /* Main Container Styling */
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            color: #1E90FF; /* Blue color */
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #1E90FF; /* Blue color */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for buttons */
+        .contact-form button:hover, .navigation-buttons button:hover {
+            background-color: #187bcd; /* Darker blue for hover */
+        }
+
+        /* Navigation buttons styling */
+        .navigation-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navigation-buttons button {
+            background-color: #1E90FF; /* Blue color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        * {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+/* .center img {width: auto; height: 500px; margin-left: auto; margin-right: auto; display: block;} */
+
+.center {
+    width: 900px;  /* Fixed width for the container */
+    height: 900px; /* Fixed height for the container */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    box-sizing: border-box; /* Includes padding in the element's total width/height */
+}
+
+.center img {
+    width: 100%;  /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: contain; /* Scale the image to cover the container, preserving aspect ratio */
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #000000;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #000000;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+        /* Responsive Design for Smaller Screens */
+        @media (max-width: 600px) {
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navigation-buttons button {
+                margin: 5px 0;
+                width: 100%;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .navbar .menu {
+                flex-direction: column;
+            }
+
+            .navbar .menu li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <!-- Blog Header with Navigation Buttons -->
+<div class="container">
+  <div class="navigation-buttons">
+    <button onclick="window.location.href='./../index.html'"><i class="fa fa-home"></i> Home</button>
+    <button onclick="window.location.href='./blog-post1.html'">First Post <i class="fa fa-arrow-right"></i></button>
+  </div>
+
+  <header>
+    <h1>Welcome to Mukundan's Blog</h1>
+    <p>
+      A space to share insights on human movement science, biomechanics, AI-powered motion analysis, and personal research stories. Whether you're an engineer, a movement enthusiast, or just curious — you'll find something engaging here.
+    </p>
+  </header>
+
+    <!-- Blog Index Section -->
+<div class="container">
+  <h2>Recent Blog Posts</h2>
+  <ul style="list-style-type: none; padding-left: 0; font-size: 1.1rem; line-height: 1.8;">
+    <li>
+      <a href="blog-post1.html" style="color: #1E90FF; text-decoration: none;">
+        <strong>Understanding Inverse Kinematics in Biomechanics</strong><br>
+        <span style="color: #666;">How we solve for joint angles from marker data using optimization and analytical methods.</span>
+      </a>
+    </li>
+    <li>
+      <a href="blog-post2.html" style="color: #1E90FF; text-decoration: none;">
+        <strong>Numerical Differentiation for Motion Analysis</strong><br>
+        <span style="color: #666;">Comparing finite differences, PyTorch autograd, and functorch for derivative estimation.</span>
+      </a>
+    </li>
+    <li>
+      <a href="blog-post3.html" style="color: #1E90FF; text-decoration: none;">
+        <strong>Reinforcement Learning for Motion Synthesis</strong><br>
+        <span style="color: #666;">Training a model to generate human-like motion using reward shaping and simulation.</span>
+      </a>
+    </li>
+    <!-- Add more posts here -->
+  </ul>
+</div>

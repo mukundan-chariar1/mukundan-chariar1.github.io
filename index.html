@@ -1,167 +1,162 @@
 <!DOCTYPE html>
-<!-- Designined by Kapil -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title>Mukundan's Portfolio Website </title>
     <link rel="stylesheet" href="style.css">
-    <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
-  <!-- Move to up button -->
   <div class="scroll-button">
     <a href="#home"><i class="fas fa-arrow-up"></i></a>
   </div>
-  <!-- navgaition menu -->
   <nav>
-    <div class="navbar">
-      <div class="logo"><a href="#">Mukundan Chariar's Portfolio.</a></div>
-      <ul class="menu">
-          <li><a href="#home">Home<span class="tab"></span></a></li>
-          <li><a href="#about">About<span class="tab"></span></a></li>
-          <!-- <li><a href="#skills">Skills<span class="tab"></span></a></li> -->
-          <li><a href="#projects">Projects<span class="tab"></span></a></li>
-          <li><a href="#contact">Contact<span class="tab"></span></a></li>
-          <div class="cancel-btn">
-            <i class="fas fa-times"></i>
-          </div>
-      </ul>
-      <p align="right"> 
-        <a href="https://www.linkedin.com/in/mukundan-chariar1/" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="bash" width="40" height="40"/> </a>
-        <a href="https://github.com/mukundan-chariar1" target="_blank" rel="noreferrer"> <img src="https://cdn.cdnlogo.com/logos/g/55/github.svg" alt="aws" width="40" height="40"/> </a> 
-    </p>
-    </div>
-    <div class="menu-btn">
-      <i class="fas fa-bars"></i>
-    </div>
-  </nav>
+  <div class="navbar">
+    <div class="logo"><a href="#">Mukundan's Portfolio.</a></div>
 
-<!-- Home Section Start -->
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/mukundan-chariar1/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="32" height="32">
+      </a>
+      <a href="https://github.com/mukundan-chariar1" target="_blank">
+        <img src="https://cdn.cdnlogo.com/logos/g/55/github.svg" alt="GitHub" width="32" height="32">
+      </a>
+    </div>
+  </div>
+</nav>
+
  <section class="home" id="home">
    <div class="home-content">
      <div class="text">
        <div class="text-one">Hello,</div>
        <div class="text-two">I'm Mukundan</div>
-       <div class="text-three">BTech in Mechatronics Engineering</div>
-       <div class="text-three">Current MSR in Mechanical Engineering at CMU</div>
-      <!--<div class="text-four">From India</div>-->
+       <div class="text-three">Engineer • Researcher • Human Movement Enthusiast</div>
+       <div class="text-four">
+        BTech Mechatronics (MIT Manipal), MS Mechanical (CMU)
+      </div>
      </div>
-     <!-- <div class="button"> -->
-       <!-- <button>Hire Me </button> -->
-       <!-- <a href="https://www.google.com"><button>Hire Me</button></a> -->
-       <!-- <a class="fcc-btn" href="https://www.linkedin.com/in/mukundan-chariar1/">Hire me</a>   -->
-     <!-- </div> -->
    </div>
  </section>
 
 </div>
-<!-- About Section Start -->
 <section class="about" id="about">
   <div class="content">
     <div class="title"><span>About Me</span></div>
-  <div class="about-details">
-    <div class="left">
-      <img src="images/chari_crop.jpeg" alt="">
-    </div>
-    <div class="right">
-      <div class="topic"><p style="text-align: center;">I work with Human Musculoskeletal Biomechanics</p></div>
-      <p style="font-size: 18px; text-align: center;">
-        I have a passion for human movement! Learning how to move better, and teaching or making tools to help others move better is my goal!<br> <br>
-        I work with Dr. Eni Halilaj at the Musculoskeletal Biomechanics Lab at Carnegie Mellon University. <br> <br>
-        I want to pursue a challenging career in an organization that utilizes me to my full potential and helps me to enhance my skills, ability, and knowledge.
-    </p>
-    
-      <div class="button">
-        <!-- <button>Download CV</button> -->
-        <!-- <a href="./cv.html"><button>View CV</button></a> -->
-        <a href="./cv.html"><button style="padding-left: 45px; padding-right: 45px;">View CV</button></a>
 
+    <div class="about-details">
+      <!-- Left Column: Image -->
+      <div class="left">
+        <img src="images/chari_crop.jpeg" alt="Mukundan Chariar">
+      </div>
+
+      <!-- Right Column: Text -->
+      <div class="right">
+        <div class="topic">I work with Human Musculoskeletal Biomechanics</div>
+        <p>
+          I have a passion for human movement—learning how to move better, and building tools or sharing knowledge to help others move better is my goal.<br><br>
+          I currently work with Dr. Eni Halilaj at the Musculoskeletal Biomechanics Lab at Carnegie Mellon University.<br><br>
+          I'm looking to pursue a career that allows me to fully apply and grow my skills in biomechanics, simulation, and human-centered engineering.
+        </p>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <a href="./cv.html"><button>View CV</button></a>
+          <a href="./resume.html"><button>View Resume</button></a>
         </div>
-        <div class="button">
-        <a href="./resume.html"><button>View Resume</button></a>
       </div>
     </div>
-  </div>
   </div>
 </section>
 
-<!-- My Services Section Start -->
+
  <section class="projects" id="projects">
-   <div class="content">
-     <div class="title"><span>Featured Projects</span></div>
-     <div class="boxes">
-
-      <a href="./project1.html" class="box-link"> 
+  <div class="content">
+    <div class="title"><span>Featured Projects</span></div>
+    
+    <div class="boxes">
+      
+      <a href="./project1.html" class="box-link">
         <div class="box">
-        <div class="topic">AI Trainer: Autoencoder Based Approach for Squat Analysis and Correction</div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">AI Trainer: Autoencoder-Based Approach for Squat Analysis and Correction</div>
+        </div>
       </a>
 
-      <a href="./project2.html" class="box-link"> 
+      <a href="./project2.html" class="box-link">
         <div class="box">
-        <div class="topic">3D Reconstruction using <br> Structure from Motion and <br> Neural Radiance Fields</div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">3D Reconstruction with Structure from Motion and Neural Radiance Fields</div>
+        </div>
       </a>
 
-      <a href="./project3.html" class="box-link"> 
+      <a href="./project3.html" class="box-link">
         <div class="box">
-        <div class="topic">Physiotherapy exercise error detection <br> using computer vision <br> and machine learning</div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">Exercise Error Detection Using Computer Vision and Machine Learning</div>
+        </div>
       </a>
 
-      <a href="./project4.html" class="box-link"> 
+      <a href="./project4.html" class="box-link">
         <div class="box">
-        <div class="topic">Multimodal Deep learning <br> for Visual Question Answering <br> <br></div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">Multimodal Deep Learning for Visual Question Answering</div>
+        </div>
       </a>
 
-       <a href="./project5.html" class="box-link"> 
+      <a href="./project5.html" class="box-link">
         <div class="box">
-        <div class="topic">Using Biological Structures <br> to improve strength to infill ratio <br> in 3D printing</div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">Bio-Inspired 3D Printing: Improving Strength-to-Infill Ratio with Nature</div>
+        </div>
       </a>
 
-       <a href="./project6.html" class="box-link"> 
+      <a href="./project6.html" class="box-link">
         <div class="box">
-        <div class="topic">Reinforcement Learning for Human motion generation using a human defined reward function</div>
-        <!-- <p>Lorem ipsum dolor set amet</p> -->
-      </div>
+          <div class="topic">Reinforcement Learning for Human Motion Using Custom Reward Functions</div>
+        </div>
       </a>
-   </div>
-   </div>
- </section>
 
-<!-- Contact Me section Start -->
+    </div>
+  </div>
+</section>
+
+
+<section class="blog-intro" id="blog">
+  <div class="content">
+    <div class="title"><span>Blog</span></div>
+
+    <div class="text">
+      <div class="topic">Exploring Biomechanics, Motion, and More</div>
+      <p>
+        Dive into topics like kinematics, human motion analysis, simulation techniques, and practical insights drawn from ongoing research and development.
+      </p>
+
+      <div class="button-group">
+        <a href="./blog/blog.html"><button>Visit Blog</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section class="contact" id="contact">
   <div class="content">
     <div class="title"><span>Contact Me</span></div>
+
     <div class="text">
-      <div class="topic">Interested in my work?</div>
-      <!-- <p>Why wait, lets plan to connect. Connection and community improve engagement, retention, and well-being </p> -->
-      <div class="button">
-        <!-- <button>Let's Chat</button> -->
-        <a class="fcc-btn" href="https://www.linkedin.com/in/mukundan-chariar1/">Get in touch!</a>
+      <div class="topic">Let's Connect</div>
+      <p>
+        Interested in my work or a potential collaboration? I'm always open to discussing biomechanics, motion analysis, research ideas, or just nerding out on cool problems. Feel free to reach out!
+      </p>
+      <div class="button-group">
+        <a href="https://www.linkedin.com/in/mukundan-chariar1/" target="_blank">
+          <button>Get in Touch</button>
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Footer Section Start -->
-<!-- <footer>
-  <div class="text">
-    <span>Created By <a href="#">Mukundan</a> | &#169; 2022 All Rights Reserved</span>
-  </div>
-</footer>
-
-  <script src="script.js"></script>
-</body>
-</html> -->
-
-<!-- comment to attempt fix -->
