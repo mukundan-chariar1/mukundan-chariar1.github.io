@@ -1,234 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Page</title>
-    <style>
-        /* Basic CSS styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multimodal Deep Learning for VQA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
 
-        /* Navigation Bar Styling */
-        .navbar {
-            background-color: #1E90FF; /* Blue background */
-            padding: 15px 0;
-            text-align: center;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
 
-        .navbar .menu {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
+    h1 {
+      color: #1E90FF;
+      font-size: 28px;
+    }
 
-        .navbar .menu li {
-            margin: 0 15px;
-        }
+    p {
+      line-height: 1.6;
+    }
 
-        .navbar .menu li a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 5px 10px;
-            transition: background-color 0.3s ease;
-        }
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
 
-        .navbar .menu li a:hover {
-            background-color: #187bcd; /* Darker blue for hover */
-        }
+    .navigation-buttons button {
+      background-color: #1E90FF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px 0;
+      transition: background 0.3s;
+    }
 
-        /* Main Container Styling */
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    .navigation-buttons button:hover {
+      background-color: #187bcd;
+    }
 
-        h1, h2 {
-            color: #1E90FF; /* Blue color */
-        }
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: 40px auto;
+    }
 
-        .section {
-            margin: 20px 0;
-        }
+    .mySlides {
+      display: none;
+      text-align: center;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .mySlides img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
+    .text {
+      font-size: 14px;
+      color: #000;
+      padding: 8px;
+      background: #f1f1f1;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
 
-        .contact-form button {
-            background-color: #1E90FF; /* Blue color */
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
+    .numbertext {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #000;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px 10px;
+      border-radius: 0 0 8px 0;
+      font-size: 13px;
+    }
 
-        /* Hover effect for buttons */
-        .contact-form button:hover, .navigation-buttons button:hover {
-            background-color: #187bcd; /* Darker blue for hover */
-        }
+    .dot-container {
+      text-align: center;
+      margin-top: 10px;
+    }
 
-        /* Navigation buttons styling */
-        .navigation-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
 
-        .navigation-buttons button {
-            background-color: #1E90FF; /* Blue color */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
+    .active {
+      background-color: #717171;
+    }
 
-        * {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-.center {
-    width: 900px;  /* Fixed width for the container */
-    height: 900px; /* Fixed height for the container */
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    box-sizing: border-box; /* Includes padding in the element's total width/height */
-}
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
-.center img {
-    width: 100%;  /* Make the image fill the container width */
-    height: 100%; /* Make the image fill the container height */
-    object-fit: contain; /* Scale the image to cover the container, preserving aspect ratio */
-}
+    @media (max-width: 768px) {
+      .navigation-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  height: auto;
-  position: relative;
-  margin: auto;
-}
+      .navigation-buttons button {
+        width: 100%;
+      }
 
-/* Caption text */
-.text {
-  color: #000000;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #000000;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-
-        /* Responsive Design for Smaller Screens */
-        @media (max-width: 600px) {
-            .navigation-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navigation-buttons button {
-                margin: 5px 0;
-                width: 100%;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .navbar .menu {
-                flex-direction: column;
-            }
-
-            .navbar .menu li {
-                margin: 10px 0;
-            }
-        }
-    </style>
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Main Content -->
-<div class="container">
+  <div class="container">
     <div class="navigation-buttons">
-        <button onclick="window.location.href='./project3.html'"><i class="fa fa-arrow-left"></i> Prev project</button>
-        <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./project5.html'">Next project <i class="fa fa-arrow-right"></i></button>
+      <button onclick="window.location.href='./project3.html'"><i class="fa fa-arrow-left"></i> Prev Project</button>
+      <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
+      <button onclick="window.location.href='./project5.html'">Next Project <i class="fa fa-arrow-right"></i></button>
     </div>
-    <!-- Project Title -->
+
     <header>
-        <h1>Multimodal Deep learning for Visual Question Answering</h1>
-        <p>Visual Question Answering (VQA) is a deep learning task where a model is given an image and a related question and must generate a correct answer based on the information in the image. The challenge lies in the model's ability to understand both the visual content and the semantics of the question, requiring it to implicitly reason about the relationships between objects in the image and the details asked in the question. This task is more complex than simple image classification, as the model must comprehend the image and answer specific questions related to its contents.<br> <br>
+      <h1>Multimodal Deep Learning for Visual Question Answering</h1>
+      <p>
+        Visual Question Answering (VQA) is a deep learning task where a model is given an image and a related question and must generate a correct answer based on the information in the image. The challenge lies in the model's ability to understand both the visual content and the semantics of the question, requiring it to implicitly reason about the relationships between objects in the image and the details asked in the question. This task is more complex than simple image classification, as the model must comprehend the image and answer specific questions related to its contents.<br> <br>
 
         To tackle this, we built a transformer-based model, which has proven effective in handling tasks that require understanding both images and text. Transformers, particularly those utilizing attention mechanisms, are capable of processing complex relationships between visual elements and textual queries, making them well-suited for VQA. We trained our model using the **Neural Symbolic VQA** dataset, a state-of-the-art dataset designed for this task, which includes a wide range of questions and images that challenge the model’s ability to reason and understand context.<br> <br>
         
@@ -239,99 +155,86 @@ body {font-family: Verdana, sans-serif;}
     </header>
 
     <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 8</div>
+        <img src="images/project4/dataset_pie.png" alt="Dataset split">
+        <div class="text">The split of the data</div>
+      </div>
 
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 8</div>
-          <div class="center"><img src="images/project4/dataset_pie.png"></div>
-          <div class="text">The split of the data</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 8</div>
-          <div class="center"><img src="images/project4/model.png"></div>
-          <div class="text">The original model proposed in the paper</div>
-        </div>
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 8</div>
+        <img src="images/project4/model.png" alt="Original model">
+        <div class="text">The original model proposed in the paper</div>
+      </div>
 
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 8</div>
-          <div class="center"><img src="images/project4/ourmodel.png"></div>
-          <div class="text">The modified model we built</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">4 / 8</div>
-          <div class="center"><img src="images/project4/results1.png"></div>
-          <div class="text">Qualitative results</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">5 / 8</div>
-          <div class="center"><img src="images/project4/results2.png"></div>
-          <div class="text">Qualitative results</div>
-        </div>
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 8</div>
+        <img src="images/project4/ourmodel.png" alt="Modified model">
+        <div class="text">The modified model we built</div>
+      </div>
 
-        <div class="mySlides fade">
-          <div class="numbertext">6 / 8</div>
-          <div class="center"><img src="images/project4/results3.png"></div>
-          <div class="text">Qualitative results</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">7 / 8</div>
-          <div class="center"><img src="images/project4/results4.png"></div>
-          <div class="text">Qualitative results</div>
-        </div>
-        
-        <div class="mySlides fade">
-          <div class="numbertext">8 / 8</div>
-          <div class="center"><img src="images/project4/results5.png"></div>
-          <div class="text">Qualitative results</div>
-        </div>
-        
-    </div>
-        <br>
-        
-    <div style="text-align:center">
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
+      <div class="mySlides fade">
+        <div class="numbertext">4 / 8</div>
+        <img src="images/project4/results1.png" alt="Qualitative results 1">
+        <div class="text">Qualitative results</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">5 / 8</div>
+        <img src="images/project4/results2.png" alt="Qualitative results 2">
+        <div class="text">Qualitative results</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">6 / 8</div>
+        <img src="images/project4/results3.png" alt="Qualitative results 3">
+        <div class="text">Qualitative results</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">7 / 8</div>
+        <img src="images/project4/results4.png" alt="Qualitative results 4">
+        <div class="text">Qualitative results</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">8 / 8</div>
+        <img src="images/project4/results5.png" alt="Qualitative results 5">
+        <div class="text">Qualitative results</div>
+      </div>
     </div>
 
-    <script>
-      let slideIndex = 0;
-      let slideTimes = [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000]; // Example times in milliseconds for each slide
-      showSlides();
-  
-      function showSlides() {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-  
-          // Hide all slides
-          for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none";  
-          }
-  
-          // Increment the slideIndex
-          slideIndex++;
-          if (slideIndex > slides.length) { slideIndex = 1; } // Reset to the first slide if we exceed the number of slides
-  
-          // Remove the "active" class from all dots
-          for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-          }
-  
-          // Show the current slide and mark the corresponding dot as active
-          slides[slideIndex - 1].style.display = "block";  
-          dots[slideIndex - 1].className += " active";
-  
-          // Set timeout for the next slide based on the specific time for each slide
-          setTimeout(showSlides, slideTimes[slideIndex - 1] || 2000); // Default to 2000ms if time is not specified
+    <div class="dot-container">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    const slideTimes = [3000, 3000, 3000, 3000, 3000, 3000, 3000, 3000];
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        dots[i].className = dots[i].className.replace(" active", "");
       }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1; }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, slideTimes[slideIndex - 1]);
+    }
+
+    showSlides();
   </script>
-</div>
+</body>
+</html>

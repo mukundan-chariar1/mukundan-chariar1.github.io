@@ -1,332 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Page</title>
-    <style>
-        /* Basic CSS styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3D Reconstruction with SfM & NeRF</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
 
-        /* Navigation Bar Styling */
-        .navbar {
-            background-color: #1E90FF; /* Blue background */
-            padding: 15px 0;
-            text-align: center;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
 
-        .navbar .menu {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
+    h1 {
+      color: #1E90FF;
+    }
 
-        .navbar .menu li {
-            margin: 0 15px;
-        }
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
 
-        .navbar .menu li a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 5px 10px;
-            transition: background-color 0.3s ease;
-        }
+    .navigation-buttons button {
+      background-color: #1E90FF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 
-        .navbar .menu li a:hover {
-            background-color: #187bcd; /* Darker blue for hover */
-        }
+    .navigation-buttons button:hover {
+      background-color: #187bcd;
+    }
 
-        /* Main Container Styling */
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
 
-        h1, h2 {
-            color: #1E90FF; /* Blue color */
-        }
+    .mySlides {
+      display: none;
+    }
 
-        .section {
-            margin: 20px 0;
-        }
+    .center {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .center img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
+    .text {
+      color: #000;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
 
-        .contact-form button {
-            background-color: #1E90FF; /* Blue color */
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
+    .numbertext {
+      color: #000;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
 
-        /* Hover effect for buttons */
-        .contact-form button:hover, .navigation-buttons button:hover {
-            background-color: #187bcd; /* Darker blue for hover */
-        }
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+    }
 
-        /* Navigation buttons styling */
-        .navigation-buttons {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
+    .active {
+      background-color: #717171;
+    }
 
-        .navigation-buttons button {
-            background-color: #1E90FF; /* Blue color */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
-        * {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-.center {
-    width: 900px;  /* Fixed width for the container */
-    height: 900px; /* Fixed height for the container */
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    box-sizing: border-box; /* Includes padding in the element's total width/height */
-}
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
 
-.center img {
-    width: 100%;  /* Make the image fill the container width */
-    height: 100%; /* Make the image fill the container height */
-    object-fit: contain; /* Scale the image to cover the container, preserving aspect ratio */
-}
+    @media (max-width: 600px) {
+      .navigation-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  height: auto;
-  position: relative;
-  margin: auto;
-}
-
-/* Caption text */
-.text {
-  color: #000000;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #000000;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-
-        /* Responsive Design for Smaller Screens */
-        @media (max-width: 600px) {
-            .navigation-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navigation-buttons button {
-                margin: 5px 0;
-                width: 100%;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .navbar .menu {
-                flex-direction: column;
-            }
-
-            .navbar .menu li {
-                margin: 10px 0;
-            }
-        }
-    </style>
+      .navigation-buttons button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Main Content -->
-<div class="container">
-    <!-- Navigation Buttons -->
+  <div class="container">
     <div class="navigation-buttons">
-        <!-- <button onclick="window.location.href='./project1.html'"><i class="fa fa-angle-left"></i> Prev project</button>
-        <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./project3.html'">Next project <i class="fa fa-angle-right"></i></button> -->
-
-        <button onclick="window.location.href='./project1.html'"><i class="fa fa-arrow-left"></i> Prev project</button>
-        <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./project3.html'">Next project <i class="fa fa-arrow-right"></i></button>
+      <button onclick="window.location.href='./project1.html'"><i class="fa fa-arrow-left"></i> Prev project</button>
+      <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
+      <button onclick="window.location.href='./project3.html'">Next project <i class="fa fa-arrow-right"></i></button>
     </div>
-    <!-- Project Title -->
-    <header>
-        <h1>3D reconstruction using SfM and NeRF</h1>
-        <p>The goal of this project was to perform 3D reconstruction on ‘in the wild’ images. 3D reconstruction is a technique where we triangulate the location of points using two different images. Since 3D reconstruction is usually performed in controlled conditions, where we know the focal length of the camera’s lens, the resolution of the image, and can also control the lighting conditions the images were taken in, this proved to be a challenging task. <br> <br>
+
+    <h1>3D Reconstruction using SfM and NeRF</h1>
+    <p>
+        The goal of this project was to perform 3D reconstruction on ‘in the wild’ images. 3D reconstruction is a technique where we triangulate the location of points using two different images. Since 3D reconstruction is usually performed in controlled conditions, where we know the focal length of the camera’s lens, the resolution of the image, and can also control the lighting conditions the images were taken in, this proved to be a challenging task. <br> <br>
         We scraped the web to obtain images of objects in at least two different views, and utilized these images along with a dataset to test our methods. The first method we implemented was Structure from Motion, which reconstructs the given object using the motion of the camera. An optimization based triangulation method was used, and this was relatively simple, since the camera’s parameters remained constant between two shots. The 3D location of the points was optimized with respect to reprojection error in each image. Reprojection error is the error between the position of the original point and its reprojected location. <br> <br>        
         The second method we implemented was NeRF, or Neural Radiance Field based reconstruction. This method involves simulating a ray of light using neural networks, and tracing it back to its source. The usage of neural networks makes this method highly accurate and fast due to parallel processing. Tracing the ray of light back to the source allows us to reconstruct the object in directions that we may not have images of. NeRF based methods also have an advantage of being highly realistic, when rendered. <br> <br>        
         My main contributions to this project were scraping the web to obtain the dataset, and helping formulate the optimization strategy for the Structure from Motion methodology.
             </p>
-    </header>
 
     <div class="slideshow-container">
-
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 7</div>
-          <div class="center"><img src="images/project2/ball1.png"></div>
-          <div class="text">NeRF reconstruction of an outdoor scene</div>
-        </div>
-        
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 7</div>
-            <div class="center"><img src="images/project2/bundleadjustment.png"></div>
-            <div class="text">A brief explanation of bundle adjustment</div>
-        </div>
-        
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 7</div>
-            <div class="center"><img src="images/project2/dataset4_good (1).png"></div>
-            <div class="text">SfM reconstruction of a toy dinosaur</div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">4 / 7</div>
-            <div class="center"><img src="images/project2/dino1.png"></div>
-            <div class="text">NeRF reconstruction of a toy dinosaur</div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">5 / 7</div>
-            <div class="center"><img src="images/project2/featmatch.png"></div>
-            <div class="text">An example of feature matching used in SfM</div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">6 / 7</div>
-            <div class="center"><img src="images/project2/fox_good (1).png"></div>
-            <div class="text">SfM reconstruction of a taxidermy fox</div>
-        </div>
-
-        <div class="mySlides fade">
-            <div class="numbertext">7 / 7</div>
-            <div class="center"><img src="images/project2/intro.png"></div>
-            <div class="text">A brief explanation of SfM</div>
-        </div>
-        
+      <div class="mySlides fade"><div class="numbertext">1 / 7</div><div class="center"><img src="images/project2/ball1.png" alt="NeRF reconstruction"></div><div class="text">NeRF reconstruction of an outdoor scene</div></div>
+      <div class="mySlides fade"><div class="numbertext">2 / 7</div><div class="center"><img src="images/project2/bundleadjustment.png" alt="Bundle Adjustment"></div><div class="text">A brief explanation of bundle adjustment</div></div>
+      <div class="mySlides fade"><div class="numbertext">3 / 7</div><div class="center"><img src="images/project2/dataset4_good (1).png" alt="SfM dinosaur"></div><div class="text">SfM reconstruction of a toy dinosaur</div></div>
+      <div class="mySlides fade"><div class="numbertext">4 / 7</div><div class="center"><img src="images/project2/dino1.png" alt="NeRF dinosaur"></div><div class="text">NeRF reconstruction of a toy dinosaur</div></div>
+      <div class="mySlides fade"><div class="numbertext">5 / 7</div><div class="center"><img src="images/project2/featmatch.png" alt="Feature matching"></div><div class="text">An example of feature matching used in SfM</div></div>
+      <div class="mySlides fade"><div class="numbertext">6 / 7</div><div class="center"><img src="images/project2/fox_good (1).png" alt="SfM fox"></div><div class="text">SfM reconstruction of a taxidermy fox</div></div>
+      <div class="mySlides fade"><div class="numbertext">7 / 7</div><div class="center"><img src="images/project2/intro.png" alt="SfM intro"></div><div class="text">A brief explanation of SfM</div></div>
     </div>
-        <br>
-        
-    <div style="text-align:center">
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
+
+    <div style="text-align:center; margin-top: 20px;">
+      <span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+      <span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+      <span class="dot"></span>
     </div>
 
     <script>
-        let slideIndex = 0;
-        let slideTimes = [2000, 2000, 2000, 2000, 2000, 2000, 2000]; // Example times in milliseconds for each slide
-        showSlides();
-    
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-    
-            // Hide all slides
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-    
-            // Increment the slideIndex
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; } // Reset to the first slide if we exceed the number of slides
-    
-            // Remove the "active" class from all dots
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-    
-            // Show the current slide and mark the corresponding dot as active
-            slides[slideIndex - 1].style.display = "block";  
-            dots[slideIndex - 1].className += " active";
-    
-            // Set timeout for the next slide based on the specific time for each slide
-            setTimeout(showSlides, slideTimes[slideIndex - 1] || 2000); // Default to 2000ms if time is not specified
-        }
+      let slideIndex = 0;
+      const slideTimes = [2000, 2000, 2000, 2000, 2000, 2000, 2000];
+      function showSlides() {
+        const slides = document.getElementsByClassName("mySlides");
+        const dots = document.getElementsByClassName("dot");
+        for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+        slideIndex = (slideIndex % slides.length) + 1;
+        for (let i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, slideTimes[slideIndex - 1] || 2000);
+      }
+      showSlides();
     </script>
-</div>
+  </div>
+</body>
+</html>

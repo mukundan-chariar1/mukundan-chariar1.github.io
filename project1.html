@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Page</title>
+    <!-- CSS and styles would be external in production -->
     <style>
-        /* Basic CSS styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -14,15 +14,14 @@
             color: #333;
         }
 
-        /* Navigation Bar Styling */
         .navbar {
-            background-color: #1E90FF; /* Blue background */
+            background-color: #1E90FF;
             padding: 15px 0;
             text-align: center;
         }
 
         .navbar .menu {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
@@ -38,60 +37,25 @@
             color: white;
             font-size: 1.2rem;
             padding: 5px 10px;
-            transition: background-color 0.3s ease;
         }
 
         .navbar .menu li a:hover {
-            background-color: #187bcd; /* Darker blue for hover */
+            background-color: #187bcd;
         }
 
-        /* Main Container Styling */
         .container {
-            width: 100%;
             max-width: 1000px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background: #fff;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
         h1, h2 {
-            color: #1E90FF; /* Blue color */
+            color: #1E90FF;
         }
 
-        .section {
-            margin: 20px 0;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        .contact-form button {
-            background-color: #1E90FF; /* Blue color */
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover effect for buttons */
-        .contact-form button:hover, .navigation-buttons button:hover {
-            background-color: #187bcd; /* Darker blue for hover */
-        }
-
-        /* Navigation buttons styling */
         .navigation-buttons {
             margin-top: 20px;
             display: flex;
@@ -99,98 +63,83 @@
         }
 
         .navigation-buttons button {
-            background-color: #1E90FF; /* Blue color */
+            background-color: #1E90FF;
             color: white;
             padding: 10px 20px;
             border: none;
-            cursor: pointer;
-            font-size: 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
         }
 
-        * {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-/* .center img {width: auto; height: 500px; margin-left: auto; margin-right: auto; display: block;} */
+        .navigation-buttons button:hover {
+            background-color: #187bcd;
+        }
 
-.center {
-    width: 900px;  /* Fixed width for the container */
-    height: 900px; /* Fixed height for the container */
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    box-sizing: border-box; /* Includes padding in the element's total width/height */
-}
+        .slideshow-container {
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+        }
 
-.center img {
-    width: 100%;  /* Make the image fill the container width */
-    height: 100%; /* Make the image fill the container height */
-    object-fit: contain; /* Scale the image to cover the container, preserving aspect ratio */
-}
+        .mySlides {
+            display: none;
+        }
 
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  height: auto;
-  position: relative;
-  margin: auto;
-}
+        .center {
+            width: 100%;
+            max-height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Caption text */
-.text {
-  color: #000000;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
+        .center img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #000000;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+        .text {
+            color: #000;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
 
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
+        .numbertext {
+            color: #000;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
 
-.active {
-  background-color: #717171;
-}
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+        }
 
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+        .active {
+            background-color: #717171;
+        }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
 
-        /* Responsive Design for Smaller Screens */
         @media (max-width: 600px) {
             .navigation-buttons {
                 flex-direction: column;
@@ -198,143 +147,117 @@ body {font-family: Verdana, sans-serif;}
             }
 
             .navigation-buttons button {
-                margin: 5px 0;
                 width: 100%;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .navbar .menu {
-                flex-direction: column;
-            }
-
-            .navbar .menu li {
-                margin: 10px 0;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- Main Content -->
 <div class="container">
     <div class="navigation-buttons">
         <button onclick="window.location.href='./index.html'"><i class="fa fa-home"></i> Home</button>
-        <button onclick="window.location.href='./project2.html'">Next project <i class="fa fa-arrow-right"></i></button>
+        <button onclick="window.location.href='./project2.html'">Next Project <i class="fa fa-arrow-right"></i></button>
     </div>
-    <!-- Project Title -->
+
     <header>
         <h1>AI Trainer: Autoencoder Based Approach for Squat Analysis and Correction</h1>
-        <p>Artificial intelligence and computer vision have vast applications in workout analysis, especially within sports and athletics, to identify errors and enhance performance. These technologies also reduce the risk of injury often linked to insufficient guidance or high-cost infrastructure. A key example is the squat exercise, where a person moves from a standing position to a deep knee bend with a vertical torso and then returns upright. Each individual's squat form varies due to differences in limb length, joint mobility, and muscular strength, influencing their movement mechanics. Squats offer numerous benefits, including increased leg strength, reinforced knee and hip joints, and cardiovascular health improvement, which lowers the risk of heart disease.<br> <br>
-        This project proposed a method to classify squat types and suggest the appropriate version for each user. Using MediaPipe and a deep learning-based approach, this study assesses squat quality as "good" or "bad." Specifically, a stacked Bidirectional Gated Recurrent Unit (Bi-GRU) model with an attention layer is employed for accurate, unbiased assessment, categorizing squats into seven classes. The model is then compared against other state-of-the-art models, both with and without attention layers. Achieving an accuracy rate of 94%, the model demonstrates superior consistency and performance with our dataset. Additionally, for users performing incorrect squats, corrective feedback is offered based on their unique performance and body proportions, guiding them toward proper form.<br> <br>
-        We collected data from over 40 participants, from whom we received informed consent. Each participant was instructed to do the squat exercise in a certain way. The spread of participants included typical as well as atypical squat motions. Normal participants were instructed to perform the squat exercise improperly so as to obtain a better distribution of data. <br> <br>        
-        Data was collected using a multi camera setup, that was custom made for our purposes. My contribution to this work was design of the study, design of the data collection apparatus, data collection itself, design of the feature extraction method and the design, training and testing of the neural network. 
-            </p>
+        <p>
+            This project uses deep learning and computer vision to evaluate squat performance and provide corrective feedback.
+            We designed a Bi-GRU model with attention for accurate classification across 7 squat types, reaching 94% accuracy.
+            Data was collected using a custom multi-camera setup from 40 participants with varied motion patterns. My role
+            involved designing the data collection apparatus, feature extraction pipeline, and training/testing the neural model.
+        </p>
     </header>
 
     <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 8</div>
+            <div class="center"><img src="images/project1/estimated_img_16.png" alt="Squat Eccentric Phase"></div>
+            <div class="text">Eccentric of the squat</div>
+        </div>
 
         <div class="mySlides fade">
-          <div class="numbertext">1 / 8</div>
-          <div class="center"><img src="images/project1/estimated_img_16.png"></div>
-          <div class="text">Eccentric of the squat</div>
-        </div>
-        
-        <div class="mySlides fade">
             <div class="numbertext">2 / 8</div>
-            <div class="center"><img src="images/project1/estimated_img_101.png"></div>
+            <div class="center"><img src="images/project1/estimated_img_101.png" alt="Squat Bottom"></div>
             <div class="text">Bottom of the squat</div>
         </div>
-        
+
         <div class="mySlides fade">
             <div class="numbertext">3 / 8</div>
-            <div class="center"><img src="images/project1/estimated_img_123.png"></div>
+            <div class="center"><img src="images/project1/estimated_img_123.png" alt="Squat Concentric"></div>
             <div class="text">Concentric of the squat</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">4 / 8</div>
-            <div class="center"><img src="images/project1/IMG20230414141246.jpg"></div>
+            <div class="center"><img src="images/project1/IMG20230414141246.jpg" alt="Intel RealSense Camera"></div>
             <div class="text">Intel RealSense D435 camera used in the setup</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">5 / 8</div>
-            <div class="center"><img src="images/project1/IMG20230414141309.jpg"></div>
+            <div class="center"><img src="images/project1/IMG20230414141309.jpg" alt="Stereo Setup"></div>
             <div class="text">The stereo setup</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">6 / 8</div>
-            <div class="center"><img src="images/project1/MicrosoftTeams-image (1).png"></div>
+            <div class="center"><img src="images/project1/MicrosoftTeams-image (1).png" alt="Keypoints Visualization"></div>
             <div class="text">Keypoints visualized on the human body in real time</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">7 / 8</div>
-            <div class="center"><img src="images/project1/MicrosoftTeams-image.png"></div>
-            <div class="text">3D keypoints with colour coding for each body segment</div>
+            <div class="center"><img src="images/project1/MicrosoftTeams-image.png" alt="3D Keypoints Visualization"></div>
+            <div class="text">3D keypoints with color coding for each body segment</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext">8 / 8</div>
-            <div class="center"><img src="images/project1/skeleton.png"></div>
-            <div class="text">3D keypoints with colour coding for each body segment</div>
+            <div class="center"><img src="images/project1/skeleton.png" alt="3D Skeleton Model"></div>
+            <div class="text">3D keypoints with color coding for each body segment</div>
         </div>
-        
     </div>
-        <br>
-        
-    <div style="text-align:center">
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span>
-          <span class="dot"></span> 
-          <span class="dot"></span> 
-          <span class="dot"></span>
+
+    <div style="text-align:center; margin-top: 20px;">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
     </div>
 
     <script>
         let slideIndex = 0;
-        let slideTimes = [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000]; // Example times in milliseconds for each slide
+        let slideTimes = [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000];
         showSlides();
-    
+
         function showSlides() {
-            let i;
             let slides = document.getElementsByClassName("mySlides");
             let dots = document.getElementsByClassName("dot");
-    
-            // Hide all slides
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
-    
-            // Increment the slideIndex
+
             slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; } // Reset to the first slide if we exceed the number of slides
-    
-            // Remove the "active" class from all dots
-            for (i = 0; i < dots.length; i++) {
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            for (let i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-    
-            // Show the current slide and mark the corresponding dot as active
-            slides[slideIndex - 1].style.display = "block";  
+
+            slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
-    
-            // Set timeout for the next slide based on the specific time for each slide
-            setTimeout(showSlides, slideTimes[slideIndex - 1] || 2000); // Default to 2000ms if time is not specified
+
+            setTimeout(showSlides, slideTimes[slideIndex - 1] || 2000);
         }
     </script>
-    
-
-
-    <!-- Navigation Buttons -->
 </div>
+</body>
+</html>
