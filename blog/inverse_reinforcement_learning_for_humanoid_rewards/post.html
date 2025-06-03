@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Post Title</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      color: #1E90FF;
+      margin-bottom: 10px;
+    }
+
+    .date {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 1.2em;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .navigation a {
+      background: #1E90FF;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .navigation a:hover {
+      background: #187bcd;
+    }
+
+    @media (max-width: 600px) {
+      .navigation {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Teaching Machines to Run Like Humans — Without Explicit Rewards</h1>
+<div class="date">Published on June 3, 2025</div>
+
+<p>
+  How do you teach a robot to move like a human — without explicitly telling it what's good or bad? That's the challenge we took on in our recent project at Carnegie Mellon University, where we explored <strong>inverse reinforcement learning</strong> (IRL) and <strong>generative adversarial methods</strong> to infer reward functions directly from motion data.
+</p>
+
+<p>
+  Traditional reinforcement learning (RL) depends heavily on hand-designed reward functions, which are often brittle and fail to generalize across variations in movement. We asked: what if a machine could <em>learn</em> what desirable movement looks like — by watching and imitating expert demonstrations?
+</p>
+
+<!-- <img src="images/blog/irl-pipeline.png" alt="Diagram of IRL with Bidirectional GANs pipeline" /> -->
+
+<p>
+  We developed a learning pipeline using <strong>Bidirectional GANs</strong> and a PPO expert policy trained in Brax to generate synthetic human-like running. The GAN learned to distinguish expert states from random ones, and this discriminator was used as a reward function for training a new policy from scratch.
+</p>
+
+<p>
+  You can also include code snippets to explain key parts of the implementation:
+</p>
+
+<pre><code># Simple reward shaping using a discriminator output
+def get_reward(discriminator, state):
+    with torch.no_grad():
+        score = discriminator(state)
+    return float(score)  # Higher = more expert-like
+</code></pre>
+
+<p>
+  While the GAN approach was promising, it ran into stability issues. The discriminator learned quickly, but the policy struggled due to weak or noisy reward gradients. We then implemented <strong>Generative Adversarial Imitation Learning (GAIL)</strong>, which evaluates full motion trajectories rather than individual states — and observed much more realistic, stable behavior.
+</p>
+
+<p>
+  <strong>Key takeaways:</strong>
+  <ul>
+    <li>GAN-based IRL can infer rewards from expert data — but training dynamics are fragile.</li>
+    <li>State-level discrimination often lacks temporal context needed for locomotion.</li>
+    <li>Trajectory-level methods like GAIL perform better for tasks like running.</li>
+  </ul>
+</p>
+
+<p>
+  We're excited about future work that combines these ideas with <strong>Wasserstein GANs</strong>, <strong>Soft Actor-Critic</strong>, and real human motion capture data — to build agents that not only move, but move naturally.
+</p>
+
+<!-- <p>
+  📄 <a href="https://github.com/mukundan-chariar1" target="_blank">See full project report and code on GitHub</a><br />
+  💬 Have thoughts or feedback? <a href="https://linkedin.com/in/mukundan-chariar1" target="_blank">Let's connect on LinkedIn</a>.
+</p> -->
+
+
+  <!-- Navigation -->
+  <div class="navigation">
+    <!-- <a href="./post1/post.html"><i class="fa fa-arrow-left"></i> Previous</a> -->
+    <a href="./../blog.html"><i class="fa fa-home"></i> Blog Home</a>
+    <a href="./../post2/post.html">Next <i class="fa fa-arrow-right"></i></a>
+  </div>
+</div>
+
+</body>
+</html>
