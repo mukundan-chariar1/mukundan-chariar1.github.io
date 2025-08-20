@@ -157,9 +157,9 @@
     <header>
       <h1>CppMjStep: Extended Custom Autograd Function for Differentiable MuJoCo Dynamics</h1>
       <p>
-        I built CppMjStep to make MuJoCo differentiable inside PyTorch without slowing everything down. It is a C++ autograd extension that lets me backpropagate through entire simulation rollouts, supports batched runs, and includes sensor gradients so models that rely on IMU or force data can train end to end. The core is multithreaded C++ for speed and it is pip installable. In my benchmarks, large models with big batch sizes see more than a 2x speedup compared with a Python approach. <br> <br>
+        I built CppMjStep to make MuJoCo differentiable inside PyTorch without slowing everything down. It is a C++ autograd extension that lets me backpropagate through entire simulation rollouts, supports batched runs, and includes sensor gradients so models that rely on IMU or force data can train end to end. The core is multithreaded C++ for speed and it is pip installable. In my benchmarks, large models with big batch sizes see more than a 2x speedup compared with a Python approach. I published it as a pip installable library.<br> <br>
 
-        Using it feels like a regular PyTorch layer. You pass a MuJoCo model and data, pick the number of steps to unroll, and call the module to step the dynamics while keeping everything in the computational graph. The repo notes MuJoCo 3.1.2 state size requirements and credits DiffMjStep as inspiration, with added support for sensors and multithreading. The goal is simple, make gradient based control and system identification in MuJoCo fast enough for real experiments. <br> <br>
+        Using it feels like a regular PyTorch layer. You pass a MuJoCo model and data, pick the number of steps to unroll, and call the module to step the dynamics while keeping everything in the computational graph. The goal is simple, make gradient based control and system identification in MuJoCo fast enough for real experiments. <br> <br>
 
         The GitHub repo is available <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">here</a>.
             </p>

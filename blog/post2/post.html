@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog Post Title</title>
+  <title>CppMjStep: fast, differentiable MuJoCo inside PyTorch</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <style>
     body {
@@ -89,33 +89,135 @@
 <body>
 
 <div class="container">
-  <h1>Blog Post Title Goes Here</h1>
-  <div class="date">Published on May 13, 2025</div>
+  <h1>CppMjStep: fast, differentiable MuJoCo inside PyTorch</h1>
+  <div class="date">Published on Aug 20, 2025</div>
 
+  <section id="cppmjstep-post">
+  <h2>Overview</h2>
   <p>
-    Start your post with a short introduction that outlines what the reader can expect. This helps orient the reader and improves engagement.
+    Modern robotics research often needs gradients that pass cleanly through physics. You might want to tune a feedback policy with backprop, identify physical parameters from rollouts, or train a network that ingests sensor streams and outputs controls. CppMjStep is my answer to that workflow. It plugs MuJoCo into PyTorch as a custom autograd op written in C++, so you can differentiate through full simulation trajectories and keep the speed you need for real experiments. The extension supports multi-step unrolling, batching, and sensor gradients, and it uses multithreading for better throughput. On large models with large batch sizes, my measurements show more than a 2x speedup over a pure Python approach.
   </p>
 
+  <h2>Why CppMjStep exists</h2>
   <p>
-    Include key insights, research takeaways, or tutorials here. Keep paragraphs short and use <strong>bold</strong> or <em>italic</em> sparingly for emphasis.
+    Differentiating through physics is powerful but expensive. Finite differences across a rollout can balloon into thousands of simulator calls. CppMjStep leans on MuJoCo’s built-in derivative routines to keep the math both correct and fast. Under the hood, it calls functions like <code>mjd_transitionFD</code> to obtain state and control Jacobians for the discrete dynamics, then chains them across the horizon so you can backpropagate through your entire rollout.
+  </p>
+  <p>
+    Two design choices make this practical for day-to-day work. First, the core op is implemented in C++ and wired into PyTorch’s autograd so gradient flow feels native while avoiding Python overhead. Second, it adds sensor support, which means you can include IMU, force, or other sensor readings in the computational graph with minimal extra cost. If you have ever wanted end-to-end gradients from controls through contact rich dynamics and back through sensors, this is built for that.
   </p>
 
-  <img src="images/blog/sample-diagram.png" alt="Diagram or illustration" />
+  <h2>What you get</h2>
+  <ul>
+    <li>End to end differentiation through MuJoCo rollouts using a single PyTorch module that unrolls multiple steps and returns a differentiable next state.</li>
+    <li>Batch execution so you can evaluate many parallel environments and still get correct gradients.</li>
+    <li>Sensor gradients included in the graph, useful for learning from IMUs or force sensors.</li>
+    <li>Multithreading in the C++ core for better wall clock performance.</li>
+    <li>Familiar MuJoCo derivative semantics since gradients are built from <code>mjd_transitionFD</code> and friends.</li>
+  </ul>
 
+  <h2>Quick start</h2>
   <p>
-    You can also include code snippets:
+    Here is a minimal example that treats the simulator as a differentiable layer. Create your model and data in MuJoCo, wrap them with <code>MjStep</code>, and call it like a PyTorch module.
   </p>
 
-  <pre><code>// Example Python snippet
-def greet(name):
-    return f"Hello, {name}!"
+  <pre><code class="language-python">import torch
+import mujoco as mj
+from CppMjStep import MjStep, PyMjStep  # C++ op and a Python reference
 
-print(greet("Biomechanics World"))
-</code></pre>
+# Load model
+xml_path = "path/to/model.xml"
+m = mj.MjModel.from_xml_path(filename=xml_path)
+d = mj.MjData(m)
 
+# Build differentiable step, choose horizon and threading
+step = MjStep(m, d, n_steps=5, multithread=False)
+
+# State and control tensors
+state = torch.rand(m.nq + m.nv + m.na + m.nsensordata, requires_grad=True)
+ctrl  = torch.rand(m.nu, requires_grad=True)
+
+# One differentiable rollout step
+next_state = step(state, ctrl)
+loss = next_state.square().mean()
+loss.backward()</code></pre>
+</section>
+
+  <section id="cppmjstep">
+  <h2>Two practical notes</h2>
   <p>
-    Wrap up with key takeaways or links to related work. Optionally invite feedback or discussion.
+    First, MuJoCo 3.1.2 expects the initial state for rollouts to use the full physics state size that includes time, and the project notes that requirement explicitly.
+    Second, you can toggle multithreading on initialization to trade a little determinism for speed.
   </p>
+  <p>
+    <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">View details on GitHub</a>
+  </p>
+
+  <h2>Performance in practice</h2>
+  <p>
+    The repo includes timing plots that compare the C++ extension with a Python reference on models with and without sensors.
+    The headline trend is simple: as batch size and model size grow, the C++ path pulls away and passes a 2x speedup in typical reinforcement learning workloads.
+    That difference is what turns a proof of concept into a trainable loop.
+  </p>
+  <p>
+    <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">Benchmarks on GitHub</a>
+  </p>
+
+  <h2>How it works under the hood</h2>
+  <p>
+    MuJoCo exposes discrete time Jacobians through <code>mjd_transitionFD</code>, which returns the matrices
+    <strong>A</strong> = &part;y/&part;x and <strong>B</strong> = &part;y/&part;u for a single step.
+    CppMjStep composes these across steps so gradients flow from the loss back to the initial state and controls.
+    You keep the convenience of PyTorch while relying on MuJoCo’s finite differencing that is tailored to its solver and contact model.
+  </p>
+  <p>
+    <a href="https://mujoco.readthedocs.io" target="_blank" rel="noopener noreferrer">MuJoCo documentation</a>
+  </p>
+
+  <h2>Relationship to prior work</h2>
+  <p>
+    CppMjStep builds on the idea introduced by DiffMjStep and extends it with sensor support and a multithreaded C++ core.
+    If you have used DiffMjStep before, the mental model carries over, so moving projects onto the faster path should be straightforward.
+  </p>
+  <p>
+    <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">Project GitHub</a>
+  </p>
+
+  <h2>When to reach for it</h2>
+  <ul>
+    <li>
+      <strong>System identification</strong> where you minimize simulation error with respect to physical parameters.
+      The gradient signal stays strong through many steps because the op differentiates the full trajectory.
+    </li>
+    <li>
+      <strong>Gradient based control</strong> for short horizon policy improvement that benefits from smooth physics gradients.
+    </li>
+    <li>
+      <strong>End to end sensor learning</strong> where IMU and force channels are part of the objective.
+    </li>
+  </ul>
+  <p>
+    If your problem needs extremely long horizons or very high resolution time steps, remember that backprop through time still carries memory cost.
+    CppMjStep helps with speed, but you will still want techniques like truncated horizons or gradient checkpointing in heavy regimes.
+  </p>
+
+  <h2>Install and learn more</h2>
+  <p>
+    The package is pip installable, with environment specifics and troubleshooting in the project’s install guide.
+    The README also lists the precise state size requirement for MuJoCo 3.1.2, along with usage snippets and benchmark figures.
+  </p>
+  <p>
+    <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">CppMjStep on GitHub</a>
+  </p>
+
+  <h2>Acknowledgment</h2>
+  <p>
+    CppMjStep draws inspiration from DiffMjStep and uses MuJoCo’s official derivative functions to keep results consistent with the core simulator.
+  </p>
+  <p>
+    <a href="https://github.com/mukundan-chariar1/CppMjStep" target="_blank" rel="noopener noreferrer">GitHub</a> |
+    <a href="https://mujoco.readthedocs.io" target="_blank" rel="noopener noreferrer">mujoco.readthedocs.io</a>
+  </p>
+</section>
 
   <!-- Navigation -->
   <div class="navigation">

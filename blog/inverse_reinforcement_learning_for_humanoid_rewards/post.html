@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog Post Title</title>
+  <title>Teaching Machines to Run Like Humans — Without Explicit Rewards</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <style>
     body {
@@ -106,7 +106,7 @@
   We developed a learning pipeline using <strong>Bidirectional GANs</strong> and a PPO expert policy trained in Brax to generate synthetic human-like running. The GAN learned to distinguish expert states from random ones, and this discriminator was used as a reward function for training a new policy from scratch.
 </p>
 
-<p>
+<!-- <p>
   You can also include code snippets to explain key parts of the implementation:
 </p>
 
@@ -115,7 +115,7 @@ def get_reward(discriminator, state):
     with torch.no_grad():
         score = discriminator(state)
     return float(score)  # Higher = more expert-like
-</code></pre>
+</code></pre> -->
 
 <p>
   While the GAN approach was promising, it ran into stability issues. The discriminator learned quickly, but the policy struggled due to weak or noisy reward gradients. We then implemented <strong>Generative Adversarial Imitation Learning (GAIL)</strong>, which evaluates full motion trajectories rather than individual states — and observed much more realistic, stable behavior.
